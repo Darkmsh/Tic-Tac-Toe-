@@ -1,4 +1,4 @@
-// Tic-tac-toe-game.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// SnakeGameTest.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 using namespace std;
 
@@ -362,30 +362,32 @@ void computer(int round)
 					space[0][0] = "O";
 					situation = 8;
 				}
-				if (spaceValue[1][2] == 1 && spaceValue[2][1])
-				{
-					spaceValue[2][2] = 0;
-					space[2][2] = "O";
-					situation = 11;
-				}
-				if (spaceValue[1][0] == 1 && spaceValue[2][1])
-				{
-					spaceValue[2][0] = 0;
-					space[2][0] = "O";
-					situation = 12;
-				}
-				else
+				//What the fuck
+				else if(spaceValue[0][1] == 1 && spaceValue[1][2] == 1)
 				{
 					spaceValue[0][2] = 0;
 					space[0][2] = "O";
 					situation = 13;
 				}
+				else if (spaceValue[1][2] == 1 && spaceValue[2][1])
+				{
+					spaceValue[2][2] = 0;
+					space[2][2] = "O";
+					situation = 11;
+				}
+				else if (spaceValue[1][0] == 1 && spaceValue[2][1])
+				{
+					spaceValue[2][0] = 0;
+					space[2][0] = "O";
+					situation = 12;
+				}
 			}
-			else if (spaceValue[1][0] == 1 && spaceValue[1][2] == 1 || spaceValue[0][1] == 1 && spaceValue[2][1] == 1)
+			else if (spaceValue[0][1] == 1 && spaceValue[2][1] == 1)
 			{
 				spaceValue[0][0] = 0;
 				space[0][0] = "O";
 				situation = 14;
+				// Ai will win
 			}
 		}
 		//in else ai win the game
@@ -486,7 +488,7 @@ void computer(int round)
 					spaceValue[2][1] = 0;
 					space[2][1] = "O";
 					situation = 4;
-					
+
 				}
 				else
 				{
@@ -514,11 +516,13 @@ void computer(int round)
 					{
 						spaceValue[1][0] = 0;
 						space[1][0] = "O";
+						situation = 6;
 					}
 					else
 					{
 						spaceValue[0][1] = 0;
 						space[0][1] = "O";
+						situation = 7;
 					}
 				}
 				else
@@ -532,6 +536,7 @@ void computer(int round)
 				{
 					spaceValue[2][0] = 0;
 					space[2][0] = "O";
+					situation = 8;
 				}
 				else
 				{
@@ -544,6 +549,7 @@ void computer(int round)
 				{
 					spaceValue[1][2] = 0;
 					space[1][2] = "O";
+					situation = 9;
 				}
 				else
 				{
@@ -554,8 +560,9 @@ void computer(int round)
 			case 11:
 				if (spaceValue[0][0] == 1)
 				{
-					spaceValue[0][2] = 0;
-					space[0][2] = "O";
+					spaceValue[2][0] = 0;
+					space[2][0] = "O";
+					situation =10;
 				}
 				else
 				{
@@ -568,6 +575,7 @@ void computer(int round)
 				{
 					spaceValue[2][2] = 0;
 					space[2][2] = "O";
+					situation = 11;
 				}
 				else
 				{
@@ -580,6 +588,7 @@ void computer(int round)
 				{
 					spaceValue[2][2] = 0;
 					space[2][2] = "O";
+					situation = 12;
 				}
 				else
 				{
@@ -590,16 +599,9 @@ void computer(int round)
 			case 14:
 				if (spaceValue[2][2] == 1)
 				{
-					if (spaceValue[2][0] == 1)
-					{
-						spaceValue[0][2] = 0;
-						space[0][2] = "O";
-					}
-					else
-					{
-						spaceValue[2][0] = 0;
-						space[2][0] = "O";
-					}
+					spaceValue[2][0] = 0;
+					space[2][0] = "O";
+					situation = 13;
 					//we will win
 				}
 				else
@@ -609,7 +611,7 @@ void computer(int round)
 				}
 				break;
 			}
-			
+
 		}
 		//Round 4
 		if (round == 7)
@@ -688,6 +690,103 @@ void computer(int round)
 					space[0][0] = "O";
 				}
 				break;
+			case 6:
+				if (spaceValue[2][1] == 1)
+				{
+					spaceValue[0][2] = 0;
+					space[0][2] = "O";
+				}
+				else
+				{
+					spaceValue[2][1] = 0;
+					space[2][1] = "O";
+				}
+				break;
+			case 7:
+				if (spaceValue[1][2] == 1)
+				{
+					spaceValue[0][2] = 0;
+					space[0][2] = "O";
+				}
+				else
+				{
+					spaceValue[1][2] = 0;
+					space[1][2] = "O";
+				}
+				break;
+			case 8:
+				if (spaceValue[0][2] == 1)
+				{
+					spaceValue[1][2] = 0;
+					space[1][2] = "O";
+				}
+				else
+				{
+					spaceValue[0][2] = 0;
+					space[0][2] = "O";
+				}
+				break;
+			case 9:
+				if (spaceValue[1][0] == 1)
+				{
+					spaceValue[0][0] = 0;
+					space[0][0] = "O";
+				}
+				else
+				{
+					spaceValue[1][0] = 0;
+					space[1][0] = "O";
+				}
+				break;
+			case 10:
+				if (spaceValue[0][2] == 1)
+				{
+					spaceValue[2][1] = 0;
+					space[2][1] = "O";
+				}
+				else
+				{
+					spaceValue[0][2] = 0;
+					space[0][2] = "O";
+				}
+				break;
+			case 11:
+				if (spaceValue[0][0] == 1)
+				{
+					spaceValue[0][1] = 0;
+					space[0][1] = "O";
+				}
+				else
+				{
+					spaceValue[0][0] = 0;
+					space[0][0] = "O";
+				}
+				break;
+			case 12:
+				if (spaceValue[0][0] == 1)
+				{
+					spaceValue[1][0] = 0;
+					space[1][0] = "O";
+				}
+				else
+				{
+					spaceValue[0][0] = 0;
+					space[0][0] = "O";
+				}
+				break;
+			case 13:
+				if (spaceValue[0][2] == 1)
+				{
+					spaceValue[1][0] = 0;
+					space[1][0] = "O";
+				}
+				else
+				{
+					spaceValue[1][0] = 0;
+					space[1][0] = "O";
+				}
+				break;
+
 			}
 
 		}
@@ -827,7 +926,6 @@ void computer(int round)
 		}
 	}
 }
-
 
 
 
